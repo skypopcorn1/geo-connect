@@ -1,12 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import LayerForm
+from .models import CSVUpload
 
 
 def index(request):
     return render(request, 'index.html')
 
 def home(request):
-    return render(request, 'home.html')
+    form = LayerForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
+    context = {
+        "form": form,
+    }
+    return render(request, 'home.html', context)
     # return HttpResponse("Hello, world. You're at the polls index.")
 
 # def trips_list(request):

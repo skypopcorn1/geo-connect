@@ -34,7 +34,7 @@ def upload_csv_file(instance, filename):
 
 class CSVUpload(models.Model):
     user        = models.ForeignKey(settings.AUTH_USER_MODEL)
-    file        = models.FileField(upload_to=upload_csv_file, validators=[csv_file_validator])
+    map_file        = models.FileField(upload_to=upload_csv_file, validators=[csv_file_validator])
     completed   = models.BooleanField(default=False)
 
     def __str__(self):
@@ -49,7 +49,7 @@ def convert_header(csvHeader):
 
 def csv_upload_post_save(sender, instance, created, *args, **kwargs):
     if not instance.completed:
-        csv_file = instance.file
+        csv_file = instance.map_file
         decoded_file = csv_file.read().decode('utf-8')
         io_string = io.StringIO(decoded_file)
         reader = csv.reader(io_string, delimiter=';', quotechar='|')
