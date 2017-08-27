@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+  <div id="navPanel" style="width: auto; height: 100%; float: left; resize: horizontal;">This will contain a list of layers</div>
+  <div id="cesiumContainer" style="width: 80%; height: 100%; float: right; resize: horizontal;"></div>
+  <script src="{% static 'Build/Cesium/arcgis.js' %}"></script>
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+</body>
+{% endblock %}

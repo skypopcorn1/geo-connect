@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<body class="background-img">
+  <div class="container col-md-12 ">
+
+    <form method="post" >
+      {% csrf_token %}
+
+  <div class="top">
+    <h1 id="title" class="nowrap"><span id="logo" clas="nowrap">Geo Connect</span></h1>
+  </div>
+  <div class="login-box animated fadeInUp">
+    <div class="box-header" style="background-color:#6BB71F">
+      <h2>Log In</h2>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="form-group">
+          {{ form.as_p }}
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <button type="button" onclick=" window.location = 'index.php';" style="background-color:#6BB71F">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" style="background-color:#6BB71F">Sign In</button>
+    <br/>
+    <a href="#"><p class="small">GeoConnect? Request Access</p></a>
+  </div>
+
+  </form>
+  </div>
+</body>
+{% endblock %}
