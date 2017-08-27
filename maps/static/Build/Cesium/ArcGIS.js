@@ -7,6 +7,7 @@ imageryLayers.addImageryProvider(new Cesium.ArcGisMapServerImageryProvider({
 }));
 
 // Start off looking at Australia.
+viewer.description = 'test viewer'
 viewer.camera.setView({
     destination: Cesium.Rectangle.fromDegrees(114.591, -45.837, 148.970, -5.730)
 });
